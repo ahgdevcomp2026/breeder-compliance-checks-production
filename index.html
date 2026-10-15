@@ -114,7 +114,7 @@ document.querySelectorAll('.pick').forEach(b=>b.onclick=()=>enter(b.dataset.app)
 $('back').onclick=()=>leave(false);
 addEventListener('popstate',()=>{if(!$('work').hidden)leave(true)});
 /* ---- Google Sheets upload ---- */
-const DEF='https://script.google.com/macros/s/AKfycbyzgHgJv1KSzRyuROjBShVIH9aCfy_qKT45nLyZEPeiyFK7AvmC5JbNcs2Ru3dFK4zb/exec',URL_=()=>LS('prod-suite-url')||DEF;
+const DEF='https://script.google.com/macros/s/AKfycbyzgHgJv1KSzRyuROjBShVIH9aCfy_qKT45nLyZEPeiyFK7AvmC5JbNcs2Ru3dFK4zb/exec',URL_=()=>{const u=LS('prod-suite-url');return u&&u.indexOf('AKfycbw0HEHd')<0?u:DEF};
 const TK='QneF6NFX9L3nuqzmOvjSlhwlfFcA';let ERR='',REP='';
 function persist(){try{localStorage.setItem('prod-suite-q',JSON.stringify(Q))}catch(e){try{localStorage.setItem('prod-suite-q',JSON.stringify(Q.map(p=>{const c=Object.assign({},p);delete c.pdf;c.noPdf=1;return c})))}catch(e2){}}}
 let Q=[];try{Q=JSON.parse(LS('prod-suite-q')||'[]')}catch(e){}
